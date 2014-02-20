@@ -37,8 +37,6 @@ public class AddActivityActivity extends Activity {
 	private String description;
 	private String location;
 
-	private Boolean isSuccess = false;
-
 	private MyActivity tmp;
 
 	@Override
@@ -109,9 +107,6 @@ public class AddActivityActivity extends Activity {
 			case R.id.add:
 				getData();
 				new putDataTask().execute("");
-				if (isSuccess) {
-					finish();
-				}
 				break;
 			default:
 				break;
@@ -149,8 +144,7 @@ public class AddActivityActivity extends Activity {
 
 				JSONObject result = new JSONObject(HttpUtil.doPut(
 						Utils.ADD_ACTIVITY, jo));
-				isSuccess = (Boolean) result.get("result");
-				return isSuccess;
+				return (Boolean) result.get("result");
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -164,6 +158,7 @@ public class AddActivityActivity extends Activity {
 				ToastUtil.showShortToast(AddActivityActivity.this, "Failed");
 			} else {
 				ToastUtil.showShortToast(AddActivityActivity.this, "Success");
+				AddActivityActivity.this.finish();
 			}
 		}
 	}
