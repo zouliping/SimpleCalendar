@@ -485,27 +485,26 @@ public final class R {
         public static final int login_pressed=0x7f020009;
         public static final int login_selector=0x7f02000a;
         public static final int logout=0x7f02000b;
-        public static final int logout_pressed=0x7f02000c;
-        public static final int logout_selector=0x7f02000d;
-        public static final int shape_bg_listview=0x7f02000e;
-        public static final int splash=0x7f02000f;
+        public static final int shape_bg_listview=0x7f02000c;
+        public static final int splash=0x7f02000d;
     }
     public static final class id {
-        public static final int action_settings=0x7f090010;
-        public static final int activity_list=0x7f09000d;
+        public static final int action_settings=0x7f090011;
+        public static final int activity_list=0x7f09000e;
         public static final int add=0x7f090006;
-        public static final int add_btn=0x7f09000c;
+        public static final int add_btn=0x7f09000d;
         public static final int avatar_menu=0x7f090008;
         public static final int back_btn=0x7f090000;
         public static final int description=0x7f090005;
-        public static final int end=0x7f09000f;
+        public static final int end=0x7f090010;
         public static final int friend_detail_list=0x7f090007;
         public static final int from=0x7f090003;
         public static final int location=0x7f090002;
         public static final int login_btn=0x7f09000b;
         public static final int login_name=0x7f090009;
         public static final int login_pwd=0x7f09000a;
-        public static final int start=0x7f09000e;
+        public static final int logout_btn=0x7f09000c;
+        public static final int start=0x7f09000f;
         public static final int title=0x7f090001;
         public static final int to=0x7f090004;
     }

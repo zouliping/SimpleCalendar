@@ -9,6 +9,8 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -30,6 +32,7 @@ public class MainActivity extends Activity {
 	private List<MyActivity> activities;
 	private ActivityAdapter adapter;
 	private ImageView btn_add;
+	private ImageView btn_logout;
 
 	private MyActivity activity;
 	private String title;
@@ -71,6 +74,8 @@ public class MainActivity extends Activity {
 
 		btn_add = (ImageView) findViewById(R.id.add_btn);
 		btn_add.setOnClickListener(listener);
+		btn_logout = (ImageView) findViewById(R.id.logout_btn);
+		btn_logout.setOnClickListener(listener);
 	}
 
 	private OnClickListener listener = new OnClickListener() {
@@ -81,6 +86,16 @@ public class MainActivity extends Activity {
 			case R.id.add_btn:
 				Intent intent = new Intent(mContext, AddActivityActivity.class);
 				startActivity(intent);
+				break;
+			case R.id.logout_btn:
+				SharedPreferences data = mContext.getSharedPreferences("data",
+						0);
+				Editor editor = data.edit();
+				editor.clear();
+				editor.commit();
+
+				Intent i = new Intent(mContext, LoginActivity.class);
+				startActivity(i);
 				break;
 			default:
 				break;
