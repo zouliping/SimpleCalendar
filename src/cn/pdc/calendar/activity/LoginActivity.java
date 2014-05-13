@@ -92,7 +92,7 @@ public class LoginActivity extends Activity {
 	 * @author zouliping
 	 * 
 	 */
-	private class LoginTask extends AsyncTask<String, Integer, Boolean> {
+	private class LoginTask extends AsyncTask<String, Integer, String> {
 
 		ProgressDialog dlg;
 
@@ -108,7 +108,7 @@ public class LoginActivity extends Activity {
 		}
 
 		@Override
-		protected Boolean doInBackground(String... params) {
+		protected String doInBackground(String... params) {
 			JSONObject jo = new JSONObject();
 			try {
 				jo.put("id", uname);
@@ -116,7 +116,7 @@ public class LoginActivity extends Activity {
 
 				JSONObject result = new JSONObject(HttpUtil.doPut(Utils.LOGIN,
 						jo));
-				return (Boolean) result.get("result");
+				return result.getString("result");
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -124,21 +124,21 @@ public class LoginActivity extends Activity {
 		}
 
 		@Override
-		protected void onPostExecute(Boolean result) {
+		protected void onPostExecute(String result) {
 			dlg.dismiss();
 			Log.e("login result", result + "");
-			if (result == false) {
+			if ("false".equals(result)) {
 				ToastUtil.showShortToast(mContext,
 						"Login failed! Please try again");
 			} else {
 				// store uid in SharedPreferences
 				SharedPreferences data = getSharedPreferences("data", 0);
 				Editor editor = data.edit();
-				editor.putString("uid", uname);
+				editor.putString("uid", result);
 				editor.putString("uname", uname);
 				editor.commit();
 
-				Utils.uid = uname;
+				Utils.uid = result;
 				Utils.uname = uname;
 
 				ToastUtil.showShortToast(mContext, "Login successfully");

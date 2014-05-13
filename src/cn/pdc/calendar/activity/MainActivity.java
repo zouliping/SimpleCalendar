@@ -136,9 +136,15 @@ public class MainActivity extends Activity {
 					}
 					if (!jactivity.isNull("start_time")) {
 						start = jactivity.getString("start_time");
+						if (start.contains("^^")) {
+							start = start.substring(0, start.indexOf("^^"));
+						}
 					}
 					if (!jactivity.isNull("end_time")) {
 						end = jactivity.getString("end_time");
+						if (end.contains("^^")) {
+							end = end.substring(0, end.indexOf("^^"));
+						}
 					}
 					if (!jactivity.isNull("description")) {
 						description = jactivity.getString("description");
