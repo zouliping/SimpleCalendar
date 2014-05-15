@@ -56,11 +56,11 @@ public class AddActivityActivity extends Activity {
 			tmp = new MyActivity();
 			try {
 				JSONObject jo = new JSONObject(jsonString);
-				tmp.setDescription(jo.getString("description"));
-				tmp.setEnd(jo.getString("end"));
-				tmp.setLocation(jo.getString("location"));
-				tmp.setStart(jo.getString("start"));
-				tmp.setTitle(jo.getString("title"));
+				tmp.setDescription(jo.getString("a_description"));
+				tmp.setEnd(jo.getString("a_end"));
+				tmp.setLocation(jo.getString("a_location"));
+				tmp.setStart(jo.getString("a_start"));
+				tmp.setTitle(jo.getString("a_title"));
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
@@ -136,11 +136,11 @@ public class AddActivityActivity extends Activity {
 				jo.put("classname", "Activity");
 				jo.put("individualname", title + System.currentTimeMillis());
 				jo.put("uid", Utils.uid);
-				jo.put("title", title);
-				jo.put("start_time", start);
-				jo.put("end_time", end);
-				jo.put("description", description);
-				jo.put("location", location);
+				jo.put("a_title", title);
+				jo.put("a_start_time", start);
+				jo.put("a_end_time", end);
+				jo.put("a_description", description);
+				jo.put("a_location", location);
 
 				JSONObject result = new JSONObject(HttpUtil.doPut(
 						Utils.ADD_ACTIVITY, jo));

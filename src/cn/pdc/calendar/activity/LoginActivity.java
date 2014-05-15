@@ -132,7 +132,7 @@ public class LoginActivity extends Activity {
 						"Login failed! Please try again");
 			} else {
 				// store uid in SharedPreferences
-				SharedPreferences data = getSharedPreferences("data", 0);
+				SharedPreferences data = getSharedPreferences("sdata", 0);
 				Editor editor = data.edit();
 				editor.putString("uid", result);
 				editor.putString("uname", uname);

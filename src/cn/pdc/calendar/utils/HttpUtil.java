@@ -49,9 +49,9 @@ public class HttpUtil {
 							"Mozilla/5.0(Linux;U;Android 2.2.1;en-us;Nexus One Build.FRG83) "
 									+ "AppleWebKit/553.1(KHTML,like Gecko) Version/4.0 Mobile Safari/533.1");
 
-//			ConnManagerParams.setTimeout(params, 10000);
-//			HttpConnectionParams.setConnectionTimeout(params, 10000);
-//			HttpConnectionParams.setSoTimeout(params, 10000);
+			// ConnManagerParams.setTimeout(params, 10000);
+			// HttpConnectionParams.setConnectionTimeout(params, 10000);
+			// HttpConnectionParams.setSoTimeout(params, 10000);
 
 			// set for http and https
 			SchemeRegistry schReg = new SchemeRegistry();
@@ -101,7 +101,7 @@ public class HttpUtil {
 		try {
 			HttpClient client = getHttpClient();
 			HttpPost request = new HttpPost(uri);
-			StringEntity se = new StringEntity(jo.toString());
+			StringEntity se = new StringEntity(jo.toString(), "UTF-8");
 			se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE,
 					"application/json"));
 			request.setEntity(se);
@@ -129,7 +129,7 @@ public class HttpUtil {
 		try {
 			HttpClient client = new DefaultHttpClient();
 			HttpPut request = new HttpPut(uri);
-			StringEntity se = new StringEntity(jo.toString());
+			StringEntity se = new StringEntity(jo.toString(), "UTF-8");
 			se.setContentEncoding(new BasicHeader(HTTP.CONTENT_TYPE,
 					"application/json"));
 			request.setEntity(se);

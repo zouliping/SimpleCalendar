@@ -2,8 +2,12 @@ package cn.pdc.calendar.activity;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import android.app.Activity;
@@ -107,7 +111,14 @@ public class MainActivity extends Activity {
 
 		@Override
 		protected String doInBackground(String... params) {
-			return HttpUtil.doGet(Utils.GET_ACTIVITY + Utils.uid);
+			List<NameValuePair> list_params = new LinkedList<NameValuePair>();
+			list_params.add(new BasicNameValuePair("classname", "Activity"));
+			list_params.add(new BasicNameValuePair("uid", Utils.uid));
+			list_params.add(new BasicNameValuePair("uname", Utils.uname));
+			list_params.add(new BasicNameValuePair("sid", Utils.sid));
+			String query = URLEncodedUtils.format(list_params, "utf-8");
+
+			return HttpUtil.doGet(Utils.GET_ACTIVITY + query);
 		}
 
 		@Override
@@ -128,33 +139,33 @@ public class MainActivity extends Activity {
 					description = getString(R.string.undefined);
 					location = getString(R.string.undefined);
 
-					if (!jactivity.isNull("title")) {
-						title = jactivity.getString("title");
+					if (!jactivity.isNull("-a_title")) {
+						title = jactivity.getString("-a_title");
 						if (title.contains("^^")) {
 							title = title.substring(0, title.indexOf("^^"));
 						}
 					}
-					if (!jactivity.isNull("start_time")) {
-						start = jactivity.getString("start_time");
+					if (!jactivity.isNull("-a_start_time")) {
+						start = jactivity.getString("-a_start_time");
 						if (start.contains("^^")) {
 							start = start.substring(0, start.indexOf("^^"));
 						}
 					}
-					if (!jactivity.isNull("end_time")) {
-						end = jactivity.getString("end_time");
+					if (!jactivity.isNull("-a_end_time")) {
+						end = jactivity.getString("-a_end_time");
 						if (end.contains("^^")) {
 							end = end.substring(0, end.indexOf("^^"));
 						}
 					}
-					if (!jactivity.isNull("description")) {
-						description = jactivity.getString("description");
+					if (!jactivity.isNull("-a_description")) {
+						description = jactivity.getString("-a_description");
 						if (description.contains("^^")) {
 							description = description.substring(0,
 									description.indexOf("^^"));
 						}
 					}
-					if (!jactivity.isNull("location")) {
-						location = jactivity.getString("location");
+					if (!jactivity.isNull("-a_location")) {
+						location = jactivity.getString("-a_location");
 						if (location.contains("^^")) {
 							location = location.substring(0,
 									location.indexOf("^^"));
