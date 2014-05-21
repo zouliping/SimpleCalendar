@@ -570,6 +570,9 @@ public final class R {
         public static final int AppTheme=0x7f070001;
         public static final int add_activity=0x7f070006;
         public static final int add_item_style=0x7f070007;
+        /**  common list large text 
+         */
+        public static final int common_list_large_text=0x7f070008;
         public static final int listItemTheme=0x7f070002;
         public static final int list_container=0x7f070005;
         public static final int text=0x7f070004;

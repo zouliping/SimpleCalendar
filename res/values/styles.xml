@@ -46,5 +46,17 @@
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:textSize">16sp</item>
     </style>
+    
+     <!-- common list large text -->
+    <style name="common_list_large_text">
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+    </style>
 
 </resources>

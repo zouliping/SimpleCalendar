@@ -6,7 +6,7 @@ public class Utils {
 	public static String uname = "";
 	public static String sid = "simplecalendar";
 
-	public static final String IP = "http://192.168.0.135:9000";
+	public static final String IP = "http://172.17.214.12:9000";
 
 	// login
 	public static final String LOGIN = IP + "/user/login";
